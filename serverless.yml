@@ -35,3 +35,13 @@ functions:
           cors: true
     layers:
       - ${file(env.${opt:stage, self:provider.stage}.json):LAMBDA_HANDLER_LAYER_ARN}
+
+  api_get_available_timeslots:
+    handler: api_endpoints/api_get_timeslots.api_get_timeslots
+    events:
+      - http:
+          path: "/timeslots"
+          method: post
+          cors: true
+    layers:
+      - ${file(env.${opt:stage, self:provider.stage}.json):LAMBDA_HANDLER_LAYER_ARN}
