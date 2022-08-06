@@ -13,7 +13,7 @@ def format_text_to_urlencoded(text:str) -> str:
 
 def get_formatted_address(raw_address: str):
     if geoapify_key is None:
-        raise Exception("API Key is none")
+        raise Exception("API Key is null")
 
     url = f'{geoapify_url}text={format_text_to_urlencoded(raw_address)}&apiKey={geoapify_key}'
 
