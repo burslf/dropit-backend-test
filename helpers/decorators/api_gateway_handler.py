@@ -15,7 +15,7 @@ def api_gateway_handler(func):
         except Exception as e:
             logger.info(e)
 
-            error_dict = {"code": "OOPS", "description": "Something went wrong."}
+            error_dict = {"code": "OOPS", "description": str(e)}
             endpoint_res = handle_error(error=error_dict, status_code=503, context=context)
 
         return endpoint_res
