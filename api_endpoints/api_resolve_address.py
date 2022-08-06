@@ -13,6 +13,9 @@ def api_resolve_address(event: {}, context: {}):
     body = get_body_from_event(event=event)
     raw_address = body.get("searchTerm")
 
+    if not raw_address:
+        raise Exception("Missing required field: searchTerm")
+
     formatted_address = get_formatted_address(raw_address=raw_address)
 
     return formatted_address
