@@ -20,3 +20,21 @@ https://6n1dhvs6hc.execute-api.us-east-1.amazonaws.com/develop/
 }
 `````
 
+#### /timeslots
+
+(working request)
+`````
+{
+    "address" : {
+        "postcode": "5200100"
+    }
+}
+`````
+(not working request)
+`````
+{
+    "address" : {
+        "postcode": "500"
+    }
+}
+`````
