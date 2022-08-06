@@ -1,0 +1,26 @@
+org: burslf
+app: dropit-backend
+service: delivery-api
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.8
+  region: us-east-1
+  stage: develop
+  environment: ${file(env.${opt:stage, self:provider.stage}.json)}
+  iam:
+    role:
+      statements:
+        - Effect: 'Allow'
+          Action:
+            - 's3:PutObject'
+            - 's3:GetObject'
+          Resource:
+            - '*'
+
+package:
+  patterns:
+    - '!.env/**'
+    - '!node_modules/**'
+
