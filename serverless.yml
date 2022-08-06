@@ -24,3 +24,13 @@ package:
     - '!.env/**'
     - '!node_modules/**'
 
+functions:
+  api_resolve_address:
+    handler: api_endpoints/api_resolve_address.api_resolve_address
+    events:
+      - http:
+          path: "/resolve-address"
+          method: post
+          cors: true
+    layers:
+      - ${file(env.${opt:stage, self:provider.stage}.json):LAMBDA_HANDLER_LAYER_ARN}
