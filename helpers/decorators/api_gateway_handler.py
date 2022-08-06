@@ -38,3 +38,4 @@ def handle_error(error: dict, status_code: int, context: dict):
     resp["body"] = json.dumps(body)
 
     return resp
+
