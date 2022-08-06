@@ -1,5 +1,3 @@
-import json
-
 from helpers.custom_log import get_logger
 from helpers.decorators.api_gateway_handler import api_gateway_handler
 from helpers.utils import get_body_from_event
