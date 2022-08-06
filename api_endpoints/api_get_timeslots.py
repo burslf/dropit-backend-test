@@ -34,6 +34,9 @@ def api_get_timeslots(event: {}, context: {}):
         if postcode in postcodes:
             available_timeslots.extend(timeslot["time_slots"])
 
+    if len(available_timeslots) == 0:
+        raise Exception("No available timeslot for this postcode")
+
     # Handle timeslot falling on holidays
     holidays = get_holidays()
     available_timeslots_without_holiday = []
