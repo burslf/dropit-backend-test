@@ -4,10 +4,6 @@ from pymongo.collection import Collection, ReturnDocument
 from pymongo.collection import ObjectId
 
 
-def as_dict(model):
-    return json.loads(json.dumps(model.__dict__, default=str))
-
-
 def add_delivery(collection: Collection, timeslot_id: str, user_id: ObjectId):
     conditional_fields = [timeslot_id, user_id]
 
