@@ -19,7 +19,7 @@ https://6n1dhvs6hc.execute-api.us-east-1.amazonaws.com/develop/
     "searchTerm" : "jabotinsky ramat gan israel"
 }
 `````
-
+##
 #### /timeslots
 
 (working request)
@@ -36,5 +36,17 @@ https://6n1dhvs6hc.execute-api.us-east-1.amazonaws.com/develop/
     "address" : {
         "postcode": "500"
     }
+}
+`````
+##
+#### /deliveries
+
+(working request)
+`````
+{
+    "user" : {
+        "name": "yoel"
+    },
+    "timeslot_id": "1"
 }
 `````
