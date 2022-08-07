@@ -1,6 +1,6 @@
 import json
 
-from db.models.delivery import add_delivery
+from db.models.delivery import session_add_delivery
 from db.models.user import session_get_user_by_name
 from helpers.custom_log import get_logger
 from helpers.db_session import get_session
@@ -38,6 +38,6 @@ def api_book_delivery(event: {}, context: {}):
     if not user_in_db:
         raise Exception(f"User not found for this name")
 
-    new_delivery = add_delivery(collection=delivery_collection, timeslot_id=timeslot_id, user_id=user_in_db["_id"])
+    new_delivery = session_add_delivery(collection=delivery_collection, timeslot_id=timeslot_id, user_id=user_in_db["_id"])
 
     return new_delivery

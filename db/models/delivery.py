@@ -4,7 +4,7 @@ from pymongo.collection import Collection, ReturnDocument
 from pymongo.collection import ObjectId
 
 
-def add_delivery(collection: Collection, timeslot_id: str, user_id: ObjectId):
+def session_add_delivery(collection: Collection, timeslot_id: str, user_id: ObjectId):
     conditional_fields = [timeslot_id, user_id]
 
     if None in conditional_fields:
@@ -22,7 +22,7 @@ def add_delivery(collection: Collection, timeslot_id: str, user_id: ObjectId):
     return delivery_to_insert
 
 
-def set_delivery_completed(collection: Collection, delivery_id: str):
+def session_set_delivery_completed(collection: Collection, delivery_id: str):
     conditional_fields = [delivery_id]
 
     if None in conditional_fields:
