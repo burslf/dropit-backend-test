@@ -45,3 +45,14 @@ functions:
           cors: true
     layers:
       - ${file(env.${opt:stage, self:provider.stage}.json):LAMBDA_HANDLER_LAYER_ARN}
+
+  api_book_delivery:
+    handler: api_endpoints/api_book_delivery.api_book_delivery
+    events:
+      - http:
+          path: "/deliveries"
+          method: post
+          cors: true
+    layers:
+      - ${file(env.${opt:stage, self:provider.stage}.json):LAMBDA_HANDLER_LAYER_ARN}
+
