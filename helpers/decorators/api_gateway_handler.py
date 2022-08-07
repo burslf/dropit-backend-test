@@ -27,7 +27,7 @@ def handle_response(body: dict, status_code=200, context=None, headers=None):
     if headers is None:
         headers = {"Access-Control-Allow-Origin": "*"}
 
-    return {"statusCode": status_code, "headers": headers, "body": json.dumps(body)}
+    return {"statusCode": status_code, "headers": headers, "body": json.dumps(body, default=str)}
 
 
 def handle_error(error: dict, status_code: int, context: dict):
