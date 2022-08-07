@@ -4,7 +4,7 @@ from pymongo.collection import Collection
 from pymongo.collection import ObjectId
 
 
-def add_user(collection: Collection, name: str):
+def session_add_user(collection: Collection, name: str):
     conditional_fields = [name]
 
     if None in conditional_fields:
