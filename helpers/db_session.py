@@ -1,7 +1,8 @@
 import os
+from pymongo.database import Database
 
 
-def get_session():
+def get_session() -> Database:
     from pymongo import MongoClient
 
     connection_string = os.environ["DB_URL"]
