@@ -11,7 +11,6 @@ def session_add_user(collection: Collection, name: str):
         raise Exception("Missing required fields")
 
     try:
-        # user = User(name=name).to_json()
         user_to_insert = get_user_to_insert(name=name)
         add_user_in_db = collection.insert_one(user_to_insert)
         user_to_insert["_id"] = add_user_in_db.inserted_id
