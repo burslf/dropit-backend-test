@@ -1,7 +1,7 @@
 import json
 
-from db.models.delivery import session_add_delivery
-from db.models.user import session_get_user_by_name
+from db.controllers.delivery_controller import add_new_delivery
+from db.controllers.user_controller import get_user_by_name
 from helpers.custom_log import get_logger
 from helpers.db_session import get_session
 from helpers.decorators.api_gateway_handler import api_gateway_handler
@@ -30,14 +30,12 @@ def api_book_delivery(event: {}, context: {}):
         raise Exception(f"Timeslot not found for this id")
 
     session = get_session()
-    delivery_collection = session["delivery"]
-    user_collection = session["user"]
 
-    user_in_db = session_get_user_by_name(collection=user_collection, name=user["name"])
+    user_in_db = get_user_by_name(session=session, name=user["name"])
 
     if not user_in_db:
         raise Exception(f"User not found for this name")
 
-    new_delivery = session_add_delivery(collection=delivery_collection, timeslot_id=timeslot_id, user_id=user_in_db["_id"])
+    new_delivery = add_new_delivery(session=session, timeslot_id=timeslot_id, user_id=user_in_db["_id"])
 
     return new_delivery
