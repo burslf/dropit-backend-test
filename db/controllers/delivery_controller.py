@@ -1,5 +1,7 @@
-from db.models.delivery import session_set_delivery_status, get_delivery_to_insert, session_add_delivery, \
-    session_get_delivery_by_id, session_delete_delivery
+import datetime
+
+from db.models.delivery import session_set_delivery_status, session_add_delivery, \
+    session_get_delivery_by_id, session_delete_delivery, session_get_latest_delivery, Delivery
 from pymongo.database import Database
 from pymongo.collection import ObjectId
 
@@ -12,8 +14,13 @@ def add_new_delivery(session: Database, timeslot_id: str, user_id: str):
 
     try:
         delivery_collection = session["delivery"]
-        delivery_to_insert = get_delivery_to_insert(timeslot_id=timeslot_id, user_id=ObjectId(user_id))
-        delivery_in_db = session_add_delivery(collection=delivery_collection, delivery=delivery_to_insert)
+        delivery = Delivery(
+            created_at=datetime.datetime.utcnow(),
+            timeslot_id=timeslot_id,
+            user_id=ObjectId(user_id),
+            status=False
+        )
+        delivery_in_db = session_add_delivery(collection=delivery_collection, delivery=delivery)
 
         return delivery_in_db
 

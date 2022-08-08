@@ -1,6 +1,9 @@
+import datetime
+
 from pymongo.database import Database
 from pymongo.collection import ObjectId
-from db.models.user import get_user_to_insert, session_add_new_user, session_get_user_by_id, session_get_user_by_name
+from db.models.user import session_add_new_user, session_get_user_by_id, session_get_user_by_name, \
+    User
 
 
 def add_new_user(session: Database, name: str):
@@ -11,8 +14,12 @@ def add_new_user(session: Database, name: str):
 
     try:
         user_collection = session["user"]
-        user_to_insert = get_user_to_insert(name=name)
-        user_in_db = session_add_new_user(collection=user_collection, user=user_to_insert)
+        user = User(
+            name=name,
+            created_at=datetime.datetime.utcnow()
+        )
+        print(user)
+        user_in_db = session_add_new_user(collection=user_collection, user=user)
 
         return user_in_db
 
