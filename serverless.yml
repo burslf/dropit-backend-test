@@ -70,3 +70,17 @@ functions:
     layers:
       - ${file(env.${opt:stage, self:provider.stage}.json):LAMBDA_HANDLER_LAYER_ARN}
 
+  api_cancel_delivery:
+    handler: api_endpoints/api_cancel_delivery.api_cancel_delivery
+    events:
+      - http:
+          path: "/deliveries/{delivery_id}"
+          method: delete
+          cors: true
+          request:
+            parameters:
+              paths:
+                delivery_id: true
+    layers:
+      - ${file(env.${opt:stage, self:provider.stage}.json):LAMBDA_HANDLER_LAYER_ARN}
+
