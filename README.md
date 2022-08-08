@@ -50,3 +50,17 @@ https://6n1dhvs6hc.execute-api.us-east-1.amazonaws.com/develop/
     "timeslot_id": "1"
 }
 `````
+##
+#### /deliveries/{delivery_id}/complete
+
+(working request)
+`````
+delivery_id = 62efd520fb4bc28de6f85f77
+`````
+
+(non working request)
+`````
+delivery_id = yoel
+delivery_id = 62efd520fb4bc28de6f85f74
+
+`````
