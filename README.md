@@ -64,3 +64,18 @@ delivery_id = yoel
 delivery_id = 62efd520fb4bc28de6f85f74
 
 `````
+##
+#### DELETE:
+#### /deliveries/{delivery_id}
+
+(working request)
+`````
+delivery_id = 62efd520fb4bc28de6f85f77
+`````
+
+(non working request)
+`````
+delivery_id = yoel
+delivery_id = 62efd520fb4bc28de6f85f74
+
+`````
