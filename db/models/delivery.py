@@ -18,7 +18,7 @@ def session_set_delivery_status(collection: Collection, delivery_id: str, status
     return updated_delivery
 
 
-def session_get_delivery_by_id(collection: Collection, _id: str):
+def session_get_delivery_by_id(collection: Collection, _id: ObjectId):
     delivery = collection.find_one({"_id": _id})
 
     return delivery
